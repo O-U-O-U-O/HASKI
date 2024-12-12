@@ -1,21 +1,15 @@
--- first task
+--second tasks
 
-fib :: Int -> Int
-fib 1 = 1
-fib n = if n > 0 
-              then fib(n - 2) + fib(n - 1)
-              else error "what"
---fibMod5 :: (Num g) => g -> g
-fibMod5 = repeat fib               
+hypo ::(Double, Double) -> (Double, Double) -> Double
+hypo (x, y) (w, z) = sqrt ((w - x)^2 + (z - y)^2)        --hypotenuse
+perimeter :: [(Double, Double)] -> Double
+perimeter [x, y, z] = sum [hypo x y, hypo y z, hypo z x]
 
--- second tasks
+--third task
 
-
-perimetr [(x, y), (z, w), (v, q)] = 
-                    let katet = (x + z + w) 
-                        catet = (y + z + q)
-                        gipot = sqrt(katet + catet)
-                    in (katet + catet + gipot )
+checkAllEq :: Eq a => [a] -> Bool
+checkAllEq [_] = True
+checkAllEq (x:xs) = all (== x) xs
 
 
 
