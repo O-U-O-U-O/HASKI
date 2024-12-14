@@ -34,9 +34,6 @@ instance Show Matrix where
     show mtx = map fst example
 
 
--- FIFTH TASK
-newtype Eqmtx :: (Eq Matrix) => Matrix -> Matrix -> Bool
-
 -- SEVENTH TASK
 det2 :: Matrix -> Double
 det2 example = if (length example = 4)
