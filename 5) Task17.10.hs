@@ -9,5 +9,16 @@ dekart :: [a] -> [a] -> [(a, a)]
 dekart xs ys = [(x, y) | x <- xs, y <- ys] -- pair of numbers
 
 
+--fifth task
 
+type BinaryRelation a = Eq a => [(a, a)]
+
+refl :: Eq a => [a] -> BinaryRelation a -> Bool   -- Рефлексивно ли бинарное отношение rel на множестве m
+refl m rel = all (\x -> (x, x) `elem` rel) m      -- проверка рефлексии для каждого элемента х из m
+
+sim :: Eq a => [a] -> BinaryRelation a -> Bool        -- Симметрично ли бинарное отношение rel на множестве m
+sim m rel = all (\(x, y) -> (y, x) `elem` rel) rel
+
+trans :: Eq a => [a] -> BinaryRelation a -> Bool      -- Транзитивно ли бинарное отношение rel на множестве m
+trans m rel = all (\(x, y) -> all (\(yy, z) -> (y == yy && (x, z) elem rel)) rel) rel
 
