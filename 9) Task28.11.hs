@@ -14,6 +14,33 @@ instance Show a => Show (BinTree a) where
                    "Node (v = " ++ show v ++ ")\n" ++
                     replicate lvl '\t' ++ "l=" ++ show0 (lvl+1) l ++ "\n" ++
                     replicate lvl '\t' ++ "r=" ++ show0 (lvl+1) r ++ "\n"
+--test tree
+testTree :: BinTree Int
+testTree = Node {
+    left = Node {
+          left = Node {left = Nil, right = Nil, value = 1, count = 1},
+          right = Node {
+             left = Node {
+                left = Nil, right = Nil, value = 4, count = 1},
+             right = Node {
+                left = Nil, right = Nil, value = 7, count = 1},
+             value = 6, count = 1
+          },
+          value = 3, count = 1
+    },
+    right = Node {
+          left = Nil,
+          right = Node {
+             left = Node {
+                left = Nil, right = Nil, value = 13, count = 1},
+             right = Nil,
+             value = 14, count = 1
+          },
+          value = 10, count = 1
+    },
+    value = 8, count = 1
+}
+
 
 -- first task
 
