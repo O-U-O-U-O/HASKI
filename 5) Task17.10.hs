@@ -17,8 +17,8 @@ refl :: Eq a => [a] -> BinaryRelation a -> Bool   -- Рефлексивно ли
 refl m rel = all (\x -> (x, x) `elem` rel) m      -- проверка рефлексии для каждого элемента х из m
 
 sim :: Eq a => [a] -> BinaryRelation a -> Bool        -- Симметрично ли бинарное отношение rel на множестве m
-sim m rel = all (\(x, y) -> (y, x) `elem` rel) rel
+sim m rel = all (\(x, y) -> (y, x) `elem` rel) m
 
 trans :: Eq a => [a] -> BinaryRelation a -> Bool      -- Транзитивно ли бинарное отношение rel на множестве m
-trans m rel = all (\(x, y) -> all (\(yy, z) -> (y == yy && (x, z) elem rel)) rel) rel
+trans m rel = all (\(x, y, z) -> all (\(x, y) -> (y, z) 'elem' rel) rel) m
 
