@@ -1,3 +1,11 @@
+--THIRD
+sum :: IO ()
+sum = 
+    readLn >>= \a ->
+    readLn >>= \b ->        
+    putStrLn $ show (a+b)
+
+
 -- FORTH TASK
 import Control.Monad.State
 fact' :: State (Int, Int) Int
