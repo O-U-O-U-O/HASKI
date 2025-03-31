@@ -1,3 +1,32 @@
+--FIRST
+
+data Person = Person {                 -- Jane Russ        Miranda
+ name :: String,                         -- Alice       John
+ surname :: String,                             --David
+ father :: Maybe Person,
+ mother :: Maybe Person
+} deriving Show
+
+jane = Person "Jane" "Smith" Nothing Nothing
+russ = Person "Russ" "Cox" Nothing Nothing
+miranda = Person "Miranda" "Lee" Nothing Nothing
+alice = Person "Alice" "Cox" (Just russ) (Just jane)
+john = Person "John" "Lee" Nothing (Just miranda)
+david = Person "David" "Lee" (Just john) (Just alice)
+
+mf :: Person -> Maybe Person
+mf (david) = Just alice
+
+main :: IO ()
+main = do
+   let m = mf (david)
+   putStrLn $ show m
+
+
+
+
+
+
 --THIRD
 sum :: IO ()
 sum = 
