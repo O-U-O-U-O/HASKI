@@ -97,8 +97,8 @@ fact n = evalState fact' (n, 1)
 
 main :: IO ()
 main = do
-  let res = fact 5
-  putStrLn $ show res
+  let m = fact 5
+  putStrLn $ show m
 
 
 
@@ -118,5 +118,5 @@ fibb n = evalState fibb' (n, 0, 1)
 
 main :: IO ()
 main = do
-    let res = fibb 8
-    putStrLn $ show res
+    let m = fibb 1
+    putStrLn $ show m
