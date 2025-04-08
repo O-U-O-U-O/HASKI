@@ -74,11 +74,12 @@ main = do
 
 
 --THIRD
-sum :: IO ()
-sum = 
-    readLn >>= \a ->
-    readLn >>= \b ->        
-    putStrLn $ show (a+b)
+
+pain :: IO()
+pain = 
+ readLn >>= (\x ->
+ readLn >>= (\y ->
+ print (x+y)))
 
 
 -- FORTH TASK
