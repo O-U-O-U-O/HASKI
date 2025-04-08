@@ -1,13 +1,43 @@
-data MozgoVzriv = 
-  Lst [Int] | RSt [Int] | Plus [Int] | Minus [Int] | Dot [Int] | Comma [Int] | Rbrack [Int] | Lbrack [Int]
-  
-so_yee :: MozgoVzriv -> [Int]
-so_yee (Lst (x:y:xs) = (y:xs)
-so_yee (Rst (xs:y:x) = (xs:y)
-so_yee (Plus (x:xs) = (x+1:xs)
-so_yee (Minus (x:xs) = (x-1:xs)
-so_yee (Dot (x:xs) = (x-1:xs)
+import System.IO
+
+type Mem ([Int], Int, [Int])
+
+wtf :: String -> Mem -> IO Mem
+wtf [] m = wtf bs (l, c, r)
+wtf (b:bs) (l, c, r)= case b of
+
+    '>' -> wtf bs (nl, nc, nr)
+           where nl = l ++ [c]
+                nc = head r 
+                nr = tail r
+
+    '<' -> wtf bs (nl, nc, nr)
+           where nl = init l
+                nc = last l
+                nr = (c:r)
+
+    '+' -> wtf bs (l, (succ c), r) 
+
+    '-' -> wtf bs (l, (pred c), r) 
+    
+    '.' -> do
+           putChar c
+           wtf bs (l, c, r)
+    ',' -> do
+           nc <- getChar
+           wtf bs (l, nc, r)      
+
+    '_' -> wtf bs (l, c, r)
+
+
 main :: IO ()
 main = do
-  let id' = Lst [1,2,3]
-  putStrLn $ show id'
+
+  let bf = "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.-------.++++++++++++++++++. \
+\--------.------.+++++++..>++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\
+\++++++++++++++++++++++++++++++++++++++.++++++++++.>++++++++++++++++++++++++++++++++.>>++++++++++++++++++++++++++++++++++++++++++\
+\+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.++++..++.+++.++.-------------------.+++++++++++."
+
+  let m = wtf bf
+  putStrLn $ show m               
+
