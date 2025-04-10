@@ -118,5 +118,5 @@ fibb n = evalState fibb' (n, 0, 1)
 
 main :: IO ()
 main = do
-    let m = fibb 1
+    let m = fibb 8
     putStrLn $ show m
