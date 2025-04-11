@@ -22,11 +22,13 @@ wtf (b:bs) (l, c, r) = case b of
 
     ',' -> do
            nc <- getChar
-           wtf bs (l, ord nc, r)   
+           wtf bs (l, ord nc, r)       
 
-    ' ' -> return ([], 0, []) --like an end
     '_' -> wtf bs (l, c, r)
 
+ -- '[' -> if c == 0 then wtf bs (l, c, r)
+ --        else if *something from bs* == ']' then *recursion*
+ 
 main :: IO ()
 main = do
       let bf = "++++++++++++++++++++++++++++++++++++++++++++++++++\
@@ -39,4 +41,5 @@ main = do
       \>>++ "    
       let memory = ([], 0, replicate 99 0) :: Mem  --there is 30000 size but it's so large
       res <- wtf bf memory
-      putStrLn $ show res
+      putStrLn $ show res              
+
